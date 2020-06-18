@@ -20,9 +20,9 @@
         </dependency>
 
         <dependency>
-            <groupId>com.egova</groupId>
-            <artifactId>egova-bunches-kafka</artifactId>
-            <version>1.0.19</version>
+            <groupId>org.springframework.kafka</groupId>
+            <artifactId>spring-kafka</artifactId>
+            <version>2.1.4.RELEASE</version>
         </dependency>
 
         <dependency>

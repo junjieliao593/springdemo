@@ -43,6 +43,6 @@ public class KafkaTestController {
             }
         }
         System.out.println("kafka测试发送完成，共" + num + "条数据");
-        return null;
+        return "kafka测试发送完成，共" + num + "条数据";
     }
 }
