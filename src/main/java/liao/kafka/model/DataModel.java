@@ -1,4 +1,4 @@
-package liao.controller.kafka;
+package liao.kafka.model;
 
 import lombok.Data;
 

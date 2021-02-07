@@ -1,4 +1,4 @@
-package liao.service.task;
+package liao.kafka.service.task;
 
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.slf4j.Logger;

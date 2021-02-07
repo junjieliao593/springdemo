@@ -1,10 +1,6 @@
-package liao.controller;
+package liao.kafka.controller;
 
 import java.lang.reflect.Method;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.UUID;
 
 public class ForTest {
 
