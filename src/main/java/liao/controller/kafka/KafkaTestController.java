@@ -1,12 +1,11 @@
-package liao.controller;
+package liao.controller.kafka;
 
+import com.alibaba.fastjson.JSON;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
@@ -44,5 +43,19 @@ public class KafkaTestController {
         }
         System.out.println("kafka测试发送完成，共" + num + "条数据");
         return "kafka测试发送完成，共" + num + "条数据";
+    }
+
+
+    /**
+     * 数据发送到指定topic
+     *
+     * @return
+     */
+    @PostMapping("/push")
+    public Object push(@RequestBody DataModel dataModel) {
+        if (dataModel != null) {
+            kafkaTemplate.send(dataModel.getTopic(), dataModel.getFlowData().getEntityId(), JSON.toJSONString(dataModel.getFlowData()));
+        }
+        return dataModel;
     }
 }
