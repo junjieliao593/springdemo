@@ -23,5 +23,7 @@ public class TestThreadPoolExecutor {
         tpe.execute(new MyThreadPoolExecutor2());
         tpe.execute(new MyThreadPoolExecutor3());
 
+        tpe.shutdown();
+
     }
 }

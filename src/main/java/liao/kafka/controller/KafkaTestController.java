@@ -37,9 +37,15 @@ public class KafkaTestController {
             String time = format0.format(System.currentTimeMillis());
             listMap.put("key-" + i + ":" + time, "value-" + i + ":" + time);
         }
+        String topic = "kafka-1";
         for (Map.Entry<String, Object> listMap1 : listMap.entrySet()) {
             if (listMap1.getValue() != null) {
-                kafkaTemplate.send("kafka-1", listMap1.getKey(), listMap1.getValue().toString());
+                kafkaTemplate.send(topic, listMap1.getKey(), listMap1.getValue().toString())
+                        .addCallback(successCallback -> {
+                            logger.info("发送kafka成功！");
+                        }, FailureCallback -> {
+                            logger.error(String.format("发送数据到Kafka出现错误，Topic: %s，数据: %s", topic, JSON.toJSONString(listMap1.getValue())));
+                });
             }
         }
         System.out.println("kafka测试发送完成，共" + num + "条数据");
