@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
@@ -31,7 +32,8 @@ public class KafkaTestController {
     @RequestMapping("/push/{num}")
     public Object pushTest(@PathVariable Integer num) {
         num = num == null ? 1 : num;
-        Map<String, Object> listMap = new HashMap<>(num);
+        //使用LinkedHashMap保证有序消费
+        Map<String, Object> listMap = new LinkedHashMap<>(num);
         for (int i = 0; i < num; i++) {
             SimpleDateFormat format0 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             String time = format0.format(System.currentTimeMillis());
